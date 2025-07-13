@@ -1,0 +1,126 @@
+[SCENESTART]
+**Título de la Escena: Introducción a las Pruebas de Hipótesis**
+
+**Voz en Off:**
+¡Hola y bienvenidos a la segunda unidad de nuestro curso de Estadística 2! Hoy nos adentraremos en uno de los temas más fundamentales y poderosos de la estadística: las Pruebas de Hipótesis.
+
+En la unidad anterior, aprendimos a estimar parámetros poblacionales. Ahora, daremos un paso más allá. Ya no nos preguntaremos '¿cuál es el valor de la media?', sino que aprenderemos a tomar decisiones formales sobre si una afirmación acerca de esa media es plausible o no.
+
+[SCENEEND]
+[SCENESTART]
+**Título de la Escena: La Lógica de una Prueba de Hipótesis**
+
+**Voz en Off:**
+La lógica de una prueba de hipótesis es muy parecida a la de un juicio. Partimos de una presunción de inocencia. En estadística, a esta presunción la llamamos **Hipótesis Nula**, y la denotamos como H sub cero.
+
+La Hipótesis Nula es la afirmación que queremos poner a prueba. Generalmente, es una afirmación de 'no efecto' o 'no diferencia'. Por ejemplo, si un fabricante afirma que sus baterías duran 500 horas, la hipótesis nula sería que la duración media es, en efecto, 500 horas.
+
+Luego, planteamos una **Hipótesis Alternativa**, denotada como H sub uno. Esta es la afirmación que creeríamos si la evidencia nos obliga a rechazar la hipótesis nula. Podría ser que la duración de las baterías es diferente a 500 horas, o quizás que es menor.
+
+El juego consiste en recolectar evidencia, es decir, una muestra, y calcular qué tan probable es obtener esa evidencia si la Hipótesis Nula fuera cierta. Si nuestra muestra es muy 'rara' o 'extrema' bajo la suposición de que H sub cero es verdadera, entonces la rechazaremos en favor de H sub uno.
+
+[SCENEEND]
+[SCENESTART]
+**Título de la Escena: Errores en la Toma de Decisiones**
+
+**Voz en Off:**
+Como en un juicio, en las pruebas de hipótesis no somos infalibles. Podemos cometer dos tipos de errores.
+
+Imaginemos que estamos probando un nuevo medicamento. La hipótesis nula es que el medicamento no tiene efecto.
+
+Un **Error de Tipo I** ocurre cuando rechazamos la hipótesis nula siendo esta verdadera. En nuestro ejemplo, sería concluir que el medicamento es efectivo cuando en realidad no lo es. La probabilidad de cometer este error se llama **alfa**, y es también nuestro **nivel de significancia**. Nosotros, los investigadores, fijamos este valor.
+
+Un **Error de Tipo II** ocurre cuando NO rechazamos la hipótesis nula, siendo esta falsa. Es decir, no detectar un efecto que sí existe. En nuestro caso, sería concluir que el medicamento no es efectivo, cuando en realidad sí lo es. La probabilidad de cometer este error se denota con la letra **beta**.
+
+Existe un compromiso entre estos dos errores. Disminuir la probabilidad de cometer uno, generalmente aumenta la probabilidad de cometer el otro.
+
+[SCENEEND]
+[SCENESTART]
+**Título de la Escena: Los 5 Pasos de una Prueba de Hipótesis**
+
+**Voz en Off:**
+Para mantener el rigor, toda prueba de hipótesis sigue 5 pasos fundamentales.
+
+**Paso 1: Formular las Hipótesis.**
+Definimos claramente nuestra Hipótesis Nula, H sub cero, que siempre incluye la igualdad, y nuestra Hipótesis Alternativa, H sub uno, que nunca la incluye.
+
+**Paso 2: Establecer el Nivel de Significancia.**
+Fijamos el valor de alfa, la probabilidad máxima que estamos dispuestos a aceptar de cometer un Error de Tipo I. Un valor común es 0.05.
+
+**Paso 3: Calcular el Estadístico de Prueba.**
+Este es un valor, calculado a partir de la muestra, que mide qué tan lejos está nuestra estimación muestral del valor que postulamos en la hipótesis nula. Los estadísticos más comunes son Z y t de Student.
+
+**Paso 4: Determinar la Regla de Decisión.**
+Aquí definimos nuestra **región de rechazo**. Si el estadístico de prueba cae en esta región, rechazamos la hipótesis nula. Esto se puede hacer comparando nuestro estadístico con un **valor crítico** de una tabla, o utilizando el famoso **p-valor**.
+
+**Paso 5: Tomar una Decisión y Concluir.**
+Finalmente, aplicamos la regla y tomamos una decisión. Pero no basta con decir 'se rechaza H sub cero'. Debemos concluir en el contexto del problema original.
+
+[SCENEEND]
+[SCENESTART]
+**Título de la Escena: TEMA A-2: Hipótesis relativas a una Media**
+
+**Voz en Off:**
+Veamos un ejemplo. Supongamos que la duración media de las bombillas de una fábrica ha sido históricamente de 1120 horas. Tomamos una muestra de 8 bombillas y obtenemos una duración media de 1070 horas. ¿Es esta evidencia suficiente para decir que la duración ha disminuido, con un nivel de significancia de 0.05?
+
+**Paso 1: Hipótesis.**
+H sub cero: la media es igual a 1120 horas.
+H sub uno: la media es menor a 1120 horas.
+
+**Paso 2: Nivel de Significancia.**
+alfa es 0.05.
+
+**Paso 3: Estadístico de Prueba.**
+Como no conocemos la desviación estándar de la población y la muestra es pequeña, usamos el estadístico t de Student. La fórmula es: la media muestral menos la media hipotética, todo dividido por el error estándar, que es la desviación estándar de la muestra sobre la raíz de n.
+
+**Paso 4: Regla de Decisión.**
+Buscamos en la tabla t de Student el valor crítico para alfa 0.05 y 7 grados de libertad. El valor es -1.895. Si nuestro estadístico t calculado es menor que -1.895, rechazaremos la hipótesis nula.
+
+**Paso 5: Decisión.**
+Al calcular el estadístico t con nuestros datos, obtenemos -1.13. Como -1.13 es mayor que -1.895, no cae en la región de rechazo. Por lo tanto, no tenemos evidencia estadística suficiente para rechazar la hipótesis nula. Concluimos que la duración media de las bombillas no es significativamente menor a 1120 horas.
+
+[SCENEEND]
+[SCENESTART]
+**Título de la Escena: TEMA B: Curvas Características de Operación**
+
+**Voz en Off:**
+Ahora hablemos del Error de Tipo II, el error de no detectar un efecto que sí existe. La probabilidad de este error, beta, depende del verdadero valor del parámetro.
+
+Una **Curva Característica de Operación**, o curva OC, grafica la probabilidad de aceptar la hipótesis nula (un resultado correcto o un error tipo II) para diferentes valores posibles del parámetro poblacional.
+
+En el eje horizontal tenemos los posibles valores del parámetro, y en el vertical, la probabilidad de aceptar H sub cero.
+
+Estas curvas son muy útiles para entender la **potencia** de nuestra prueba, que es 1 menos beta. La potencia es la capacidad de la prueba para detectar un efecto real.
+
+Podemos ver que si el verdadero valor de la media está muy lejos del valor nulo, la probabilidad de aceptar H sub cero es muy baja, lo que significa que la potencia de la prueba es alta.
+
+Las curvas de operación también nos muestran cómo el tamaño de la muestra afecta a la potencia. A medida que aumentamos el tamaño de la muestra, la curva se vuelve más pronunciada. Esto significa que la prueba se vuelve más potente y es mejor para distinguir entre la hipótesis nula y la alternativa.
+
+[SCENEEND]
+[SCENESTART]
+**Título de la Escena: TEMA B-3: Hipótesis relativas a dos Medias**
+
+**Voz en Off:**
+Muy a menudo, no nos interesa una sola media, sino comparar las medias de dos grupos diferentes. Por ejemplo, ¿un nuevo fertilizante aumenta la producción de trigo en comparación con un grupo de control?
+
+Aquí, nuestra hipótesis nula suele ser que no hay diferencia entre las dos medias, es decir, que la diferencia es cero. La hipótesis alternativa puede ser que la diferencia no es cero, o que es mayor o menor que cero.
+
+El procedimiento es muy similar. Calculamos un estadístico de prueba, generalmente un estadístico t si no conocemos las varianzas poblacionales.
+
+La fórmula para el estadístico t de dos muestras parece más compleja, pero la lógica es la misma: mide la diferencia observada entre las medias muestrales en unidades de error estándar. El error estándar ahora tiene en cuenta la variabilidad de ambas muestras.
+
+Luego, comparamos este estadístico t con un valor crítico de la tabla t, con n1 más n2 menos 2 grados de libertad, para tomar nuestra decisión.
+
+Por ejemplo, si el t calculado es 1.85 y nuestro valor crítico para alfa 0.05 es 1.72, rechazaríamos la hipótesis nula y concluiríamos que hay una diferencia significativa entre los dos grupos.
+
+[SCENEEND]
+[SCENESTART]
+**Título de la Escena: Resumen y Próximos Pasos**
+
+**Voz en Off:**
+En esta unidad, hemos aprendido a realizar pruebas de hipótesis, una herramienta esencial para la toma de decisiones basada en datos. Hemos cubierto la lógica fundamental, los cinco pasos clave, las pruebas para una y dos medias, y el concepto de potencia a través de las curvas de operación.
+
+Recuerden, la clave está en formular correctamente las hipótesis, elegir el estadístico adecuado y, lo más importante, interpretar los resultados en el contexto del problema.
+
+En la próxima unidad, exploraremos las pruebas de hipótesis para otros parámetros, como las proporciones y las varianzas. ¡Nos vemos allí!
+[SCENEEND]
