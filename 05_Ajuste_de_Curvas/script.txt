@@ -1,0 +1,101 @@
+### GUION: UNIDAD 5 - AJUSTE DE CURVAS ###
+
+---
+**SECCIÓN 1: INTRODUCCIÓN AL AJUSTE DE CURVAS**
+---
+
+**(0-5s) [ESCENA: Título]**
+**VOZ:** ¡Bienvenidos a la Unidad 5 de Estadística Aplicada II! Hoy exploraremos el fascinante mundo del **Ajuste de Curvas**.
+
+**(5-15s) [ESCENA: Diagrama de dispersión apareciendo]**
+**VOZ:** A menudo, en ciencia e ingeniería, queremos entender la relación entre dos variables. Por ejemplo, ¿cómo afecta la cantidad de un aditivo al tiempo de secado de un barniz? O, ¿qué relación hay entre la edad de una persona y su tensión arterial?
+
+**(15-25s) [ESCENA: Puntos en el diagrama de dispersión y pregunta flotando]**
+**VOZ:** El primer paso es visualizar los datos en un **diagrama de dispersión**. Este gráfico nos da una idea intuitiva de si existe una relación y de qué tipo podría ser: lineal, curvilínea, etc.
+
+**(25-35s) [ESCENA: Una línea recta intenta ajustarse "a ojo" a los puntos, moviéndose]**
+**VOZ:** Nuestro objetivo es encontrar una función matemática, una curva, que se ajuste a estos datos de la mejor manera posible. Esta curva nos permitirá predecir el valor de una variable a partir de la otra.
+
+---
+**SECCIÓN 2: TEMA A - REGRESIÓN SIMPLE**
+---
+
+**(35-45s) [ESCENA: Título del Tema A]**
+**VOZ:** Empecemos con el caso más sencillo: la **Regresión Lineal Simple**, donde buscamos ajustar una línea recta a nuestros datos.
+
+**(45-60s) [ESCENA: Ecuación de la recta y=a+bx. Líneas verticales desde los puntos a la recta (residuos)]**
+**VOZ:** La pregunta es: ¿cuál es la "mejor" recta? Intuitivamente, es la que pasa "más cerca" de todos los puntos. Medimos esta "cercanía" con las distancias verticales desde cada punto a la recta, llamadas **residuos** o errores.
+
+**(60-75s) [ESCENA: Animación de la fórmula de Mínimos Cuadrados]**
+**VOZ:** Para encontrar la mejor recta, usamos el **Método de los Mínimos Cuadrados**. Este método minimiza la suma de los cuadrados de estos residuos. ¿Por qué los cuadrados? Para evitar que errores positivos y negativos se cancelen y para penalizar más los errores grandes.
+
+**(75-90s) [ESCENA: Fórmulas para los coeficientes 'a' y 'b']**
+**VOZ:** Al minimizar esta suma, a través de derivadas parciales, obtenemos un sistema de "ecuaciones normales" que nos dan las fórmulas para calcular la ordenada al origen 'a' y la pendiente 'b' de nuestra recta de regresión.
+
+---
+**SECCIÓN 3: INFERENCIAS EN REGRESIÓN**
+---
+
+**(90-100s) [ESCENA: Título de la sección]**
+**VOZ:** ¡Pero no basta con encontrar la recta! Necesitamos saber qué tan confiable es. Aquí entran las **inferencias basadas en Mínimos Cuadrados**.
+
+**(100-115s) [ESCENA: Gráfico de la recta con bandas de confianza alrededor]**
+**VOZ:** Podemos construir **intervalos de confianza** para los coeficientes 'a' y 'b'. Estos intervalos nos dan un rango de valores probables para los verdaderos parámetros de la población, no solo de nuestra muestra.
+
+**(115-130s) [ESCENA: Prueba de hipótesis para la pendiente 'b']**
+**VOZ:** Una de las pruebas más importantes es la prueba de hipótesis para la pendiente 'b'. Si 'b' pudiera ser cero, significaría que no hay una relación lineal entre las variables. Rechazar esta hipótesis nos da evidencia estadística de que la relación es real.
+
+---
+**SECCIÓN 4: REGRESIÓN CURVILÍNEA**
+---
+
+**(130-140s) [ESCENA: Título de la sección y un diagrama de dispersión con forma de curva]**
+**VOZ:** ¿Y si los datos no siguen una línea recta? A veces, la relación es curvilínea.
+
+**(140-155s) [ESCENA: Gráfico exponencial y potencial. Al lado, su versión "linealizada" usando logaritmos]**
+**VOZ:** Muchos de estos casos se pueden "linealizar". Por ejemplo, si la relación es **exponencial** o **potencial**, aplicando logaritmos a una o ambas variables podemos transformar el problema en uno lineal y usar los mismos métodos que ya vimos.
+
+**(155-165s) [ESCENA: Animación de la transformación logarítmica y ajuste de la recta]**
+**VOZ:** Una vez calculados los coeficientes en la escala logarítmica, aplicamos la transformación inversa para obtener la ecuación de la curva que se ajusta a los datos originales.
+
+---
+**SECCIÓN 5: TEMA B - REGRESIÓN MÚLTIPLE Y POLINÓMICA**
+---
+
+**(165-175s) [ESCENA: Título del Tema B]**
+**VOZ:** Ahora, pasemos a la **Regresión Múltiple**, donde una variable dependiente 'y' se explica por más de una variable independiente.
+
+**(175-190s) [ESCENA: Ecuación y=b0+b1x1+b2x2... y un plano ajustándose a una nube de puntos 3D]**
+**VOZ:** Por ejemplo, si queremos predecir el número de torsiones que resiste una aleación, podríamos usar como variables predictoras el porcentaje de dos metales diferentes. En lugar de una recta, ahora ajustamos un plano o un hiperplano a los datos.
+
+**(190-200s) [ESCENA: Título "Ajuste de un Polinomio"]**
+**VOZ:** Un caso especial de regresión múltiple es el **ajuste de un polinomio**. Aquí, las "múltiples" variables son en realidad potencias de una única variable: x, x al cuadrado, x al cubo, etc.
+
+**(200-215s) [ESCENA: Diagrama de dispersión con forma de parábola y una curva cuadrática ajustándose]**
+**VOZ:** Esto es útil cuando los datos tienen picos o valles, como en el ejemplo del tiempo de secado del barniz, que disminuye con un aditivo pero luego vuelve a aumentar. Aquí, un polinomio de segundo grado, una parábola, podría ser un buen modelo.
+
+---
+**SECCIÓN 6: SELECCIÓN DEL MODELO Y CORRELACIÓN**
+---
+
+**(215-225s) [ESCENA: Título de la sección]**
+**VOZ:** ¿Pero cómo elegimos el grado del polinomio? ¿Lineal, cuadrático, cúbico?
+
+**(225-240s) [ESCENA: Tabla mostrando la varianza residual para diferentes grados de polinomio. Una flecha señala el "salto" más grande]**
+**VOZ:** Un método útil es analizar la **varianza residual**. Calculamos el error de ajuste para cada grado de polinomio. Buscamos el punto donde agregar un término de mayor grado ya no reduce significativamente el error. Ese "salto" nos indica el mejor ajuste.
+
+**(240-255s) [ESCENA: Diagrama de Correlación vs. Regresión. Correlación: dos variables en un círculo. Regresión: una variable predice a la otra (flecha)]**
+**VOZ:** Finalmente, es crucial no confundir **regresión** con **correlación**. La correlación mide la *fuerza* y *dirección* de la asociación entre dos variables, tratándolas de forma simétrica. La regresión, en cambio, busca *modelar* y *predecir* una variable a partir de la otra, estableciendo una relación de dependencia.
+
+---
+**SECCIÓN 7: CIERRE**
+---
+
+**(255-265s) [ESCENA: Mosaico de todas las animaciones mostradas]**
+**VOZ:** En esta unidad, hemos aprendido a ajustar rectas, curvas y planos a nuestros datos, a realizar inferencias sobre ellos y a elegir el modelo más adecuado.
+
+**(265-275s) [ESCENA: Título final con agradecimiento]**
+**VOZ:** Estas herramientas son fundamentales para el análisis de datos en ingeniería y ciencias. ¡Gracias por acompañarnos y nos vemos en la próxima unidad!
+---
+**FIN DEL GUION**
+---
