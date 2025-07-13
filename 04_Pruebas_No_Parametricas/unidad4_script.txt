@@ -1,0 +1,58 @@
+Title: Pruebas No Paramétricas: Tests
+
+[INTRO 15s] Contexto y motivación
+
+"Hola! En esta clase vamos a sumergirnos en el mundo de las pruebas no paramétricas. A diferencia de las pruebas paramétricas como la prueba t o ANOVA, las pruebas no paramétricas no requieren que nuestros datos sigan una distribución específica, como la normal. Esto las hace increíblemente útiles cuando trabajamos con muestras pequeñas, datos ordinales o cuando tenemos valores atípicos que podrían afectar nuestros resultados. Hoy, vamos a explorar cuatro de las pruebas no paramétricas más importantes: la Prueba del Signo, la Prueba de Suma de Rangos de Wilcoxon, la Prueba de Kruskal-Wallis y las Pruebas de Aleatoriedad."
+
+[SECCIÓN 1: PRUEBA DEL SIGNO 2-3min]
+
+"Empecemos con la Prueba del Signo. Esta es una de las pruebas no paramétricas más simples y se utiliza para probar hipótesis sobre la mediana de una población. La idea es muy intuitiva. Comparamos cada dato con la mediana hipotética y le asignamos un signo de más si es mayor, o un signo de menos si es menor.
+
+Por ejemplo, si tenemos los siguientes datos: 10, 12, 8, 15, 9, y nuestra hipótesis nula es que la mediana es 11, los signos serían: -, +, -, +, -. La prueba del signo cuenta cuántos signos de más y de menos tenemos, y si hay una diferencia significativa entre ellos, rechazamos la hipótesis nula.
+
+Esta prueba es ideal cuando solo nos interesa la dirección de la diferencia y no su magnitud. Es muy robusta, pero no tan potente como otras pruebas que veremos a continuación."
+
+[SECCIÓN 2: PRUEBA DE SUMA DE RANGOS DE WILCOXON 3-4min]
+
+"Ahora, pasemos a la Prueba de Suma de Rangos de Wilcoxon. Esta prueba es más potente que la Prueba del Signo porque no solo considera el signo de las diferencias, sino también su magnitud. Se utiliza para comparar dos muestras relacionadas o pareadas, como en un estudio de 'antes y después'.
+
+El procedimiento es el siguiente:
+1. Calculamos las diferencias entre los pares de datos.
+2. Ordenamos las diferencias en valor absoluto, de menor a mayor.
+3. Asignamos rangos a estas diferencias.
+4. Sumamos los rangos de las diferencias positivas y los de las negativas.
+5. El estadístico de prueba, W, es el menor de estas dos sumas.
+
+Si el valor de W es muy pequeño, significa que hay un desequilibrio en los rangos, lo que sugiere que hay una diferencia significativa entre las dos muestras."
+
+[SECCIÓN 3: PRUEBA DE KRUSKAL-WALLIS 3-4min]
+
+"¿Qué pasa si tenemos más de dos grupos independientes? Aquí es donde entra en juego la Prueba de Kruskal-Wallis. Es la alternativa no paramétrica al ANOVA de un factor. Esta prueba nos permite comparar las medianas de tres o más poblaciones sin asumir que los datos provienen de una distribución normal.
+
+El procedimiento es similar al de Wilcoxon:
+1. Combinamos todos los datos de todos los grupos.
+2. Ordenamos los datos y les asignamos rangos.
+3. Sumamos los rangos para cada grupo.
+4. Calculamos el estadístico H, que mide la variabilidad de las sumas de rangos entre los grupos.
+
+Un valor grande de H indica que al menos una de las poblaciones es diferente de las demás."
+
+[SECCIÓN 4: PRUEBAS DE ALEATORIEDAD 2-3min]
+
+"A veces, no nos interesa comparar grupos, sino determinar si una secuencia de datos es aleatoria. Para esto, utilizamos las Pruebas de Aleatoriedad, como la Prueba de Rachas. Una racha es una secuencia de observaciones idénticas.
+
+Por ejemplo, en la secuencia A, B, B, A, A, A, B, tenemos 4 rachas. La prueba de rachas cuenta el número total de rachas en una secuencia. Si hay muy pocas o demasiadas rachas, podemos concluir que la secuencia no es aleatoria.
+
+Esta prueba es muy útil en control de calidad, para detectar patrones en procesos de producción, o en finanzas, para analizar la aleatoriedad de los precios de las acciones."
+
+[SECCIÓN 5: PRUEBAS DE KOLMOGOROV-SMIRNOV 3-4min]
+
+"Finalmente, tenemos las Pruebas de Kolmogorov-Smirnov. Estas pruebas son muy versátiles y se utilizan para dos propósitos principales:
+1.  **Prueba de bondad de ajuste:** Para determinar si una muestra de datos sigue una distribución específica.
+2.  **Prueba de dos muestras:** Para determinar si dos muestras provienen de la misma distribución.
+
+La prueba de Kolmogorov-Smirnov compara la función de distribución acumulada empírica de los datos con la función de distribución acumulada teórica de la distribución que estamos probando. El estadístico de prueba, D, es la máxima diferencia entre estas dos funciones. Si D es muy grande, rechazamos la hipótesis de que los datos siguen esa distribución."
+
+[CIERRE 30s]
+
+"Y ahí lo tienen. Hemos cubierto cuatro de las pruebas no paramétricas más importantes. Estas pruebas son herramientas esenciales en nuestro arsenal estadístico, ya que nos permiten analizar datos en una amplia variedad de situaciones en las que las pruebas paramétricas no son adecuadas. En los próximos videos, profundizaremos en cada una de estas pruebas con ejemplos prácticos y más detalles técnicos. ¡Nos vemos en la próxima clase!"
