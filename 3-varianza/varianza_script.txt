@@ -1,0 +1,23 @@
+
+[INTRO 15s]
+¡Hola a todos! En unidades anteriores, nuestro foco principal ha sido la media de una población. Sin embargo, en muchos problemas de la vida real, la variabilidad o la consistencia de un proceso es igual o incluso más importante. En esta unidad, aprenderemos a realizar inferencias sobre la varianza y las proporciones de una población.
+
+[TEORÍA 2-3min]
+Así como la media muestral sigue una distribución de probabilidad, la varianza muestral también lo hace. Si tomamos muestras de una población normal, el estadístico (n-1)s²/σ² sigue una distribución conocida como Chi-cuadrado. Esta distribución es fundamental para construir intervalos de confianza y realizar pruebas de hipótesis sobre la varianza poblacional. Es una distribución asimétrica y solo toma valores positivos, lo cual es lógico, ya que la varianza no puede ser negativa.
+
+Por otro lado, muchos problemas no tratan con mediciones, sino con conteos o porcentajes. ¿Qué proporción de una población apoya a un candidato? ¿Qué porcentaje de piezas es defectuoso? Para estos casos, trabajamos con la proporción muestral, p-gorro, que es nuestro mejor estimador de la proporción poblacional p. Para muestras grandes, la distribución de p-gorro puede aproximarse a una distribución normal, lo que nos permite, de manera similar a como hicimos con la media, construir intervalos de confianza y realizar pruebas de hipótesis.
+
+[DEMOSTRACIÓN 3-4min]
+Vamos a explorar la prueba de Chi-cuadrado para la bondad de ajuste. Esta prueba nos permite decidir si nuestros datos observados se ajustan a una distribución teórica. El estadístico de prueba Chi-cuadrado mide la discrepancia entre las frecuencias que observamos y las que esperaríamos si nuestra hipótesis fuera cierta.
+
+Paso 1: La fórmula suma las diferencias al cuadrado entre las frecuencias observadas (O) y las esperadas (E), ponderadas por las esperadas. ¿Por qué al cuadrado? Para evitar que las diferencias positivas y negativas se anulen y para magnificar las grandes desviaciones.
+Paso 2: ¿Por qué dividimos por la frecuencia esperada? Para estandarizar la diferencia. Una desviación de 5 es mucho más significativa si esperabas 10 que si esperabas 1000. Este cociente, conceptualmente, se comporta como el cuadrado de una variable normal estandarizada.
+Paso 3: La suma de estos términos sigue una distribución Chi-cuadrado. Los grados de libertad se calculan como k (el número de categorías) menos 1, menos m (el número de parámetros que hayamos estimado a partir de los datos). ¿Por qué restamos estos términos? Perdemos un grado de libertad porque la suma total de frecuencias está fija, y perdemos un grado de libertad adicional por cada parámetro poblacional que estimamos usando la propia muestra.
+
+[EJEMPLO 2min]
+Supongamos que lanzamos un dado 600 veces y queremos saber si es justo. Nuestra hipótesis nula es que la probabilidad de cada cara es 1/6. La frecuencia esperada para cada cara sería 100. Calculamos las frecuencias observadas, aplicamos la fórmula de Chi-cuadrado y comparamos el resultado con el valor crítico de la tabla Chi-cuadrado con 5 grados de libertad. Si el valor calculado es mayor que el crítico, rechazamos la idea de que el dado es justo.
+
+Este mismo principio se extiende a las tablas de contingencia para probar la independencia entre dos variables categóricas, donde calculamos las frecuencias esperadas bajo el supuesto de independencia.
+
+[CIERRE 30s]
+En esta unidad hemos añadido dos herramientas cruciales a nuestro arsenal: la inferencia sobre la varianza poblacional usando la distribución Chi-cuadrado, y la inferencia sobre proporciones. Hemos visto cómo la prueba de Chi-cuadrado nos permite realizar pruebas de bondad de ajuste e independencia, abriendo la puerta al análisis de datos categóricos. ¡Nos vemos en la próxima unidad!

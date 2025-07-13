@@ -1,0 +1,55 @@
+Title: Pruebas No Paramétricas: Más Allá de la Normalidad
+
+[INTRO 15s] Contexto y motivación
+
+"Estimados estudiantes, hasta ahora hemos navegado por el fascinante mundo de las pruebas paramétricas: la prueba Z, la prueba t, el ANOVA. Todas ellas, herramientas poderosas, pero con un requisito fundamental: la asunción de que nuestros datos provienen de una población con una distribución conocida, generalmente la distribución normal. Pero, ¿qué ocurre cuando esta asunción no se cumple? ¿Qué hacemos si nuestros datos son ordinales, o si tenemos valores atípicos extremos que distorsionan la media? Aquí es donde las pruebas no paramétricas, también conocidas como pruebas de distribución libre, entran en juego. Son nuestra alternativa robusta y confiable cuando la normalidad no es una opción."
+
+[TEORÍA 2-3min] Explicación conceptual + "¿Por qué?"
+
+"El corazón de las pruebas no paramétricas reside en un concepto muy simple pero ingenioso: la \textbf{lógica del rango}. En lugar de trabajar directamente con los valores numéricos de nuestros datos, transformamos estos datos en sus rangos, es decir, su posición relativa cuando los ordenamos de menor a mayor.
+
+\textbf{¿Por qué hacemos esto?} La razón es profunda: al convertir los datos a rangos, eliminamos la dependencia de la forma específica de la distribución de la población original. La distribución de los rangos es conocida y predecible, lo que nos permite construir estadísticos de prueba y calcular p-valores sin asumir normalidad. Esto las hace increíblemente robustas a la no normalidad y a la presencia de valores atípicos.
+
+Sin embargo, esta robustez tiene un costo. Las pruebas no paramétricas no son una solución mágica. Si los supuestos de una prueba paramétrica se cumplen, esta última siempre será más potente, es decir, tendrá una mayor probabilidad de detectar un efecto real si existe.
+
+\textbf{¿Y por qué se pierde potencia?} Porque al usar rangos, sacrificamos información valiosa: la magnitud exacta de las diferencias entre las observaciones. Por ejemplo, la diferencia entre 1 y 2 es la misma en rango que entre 100 y 101, pero la magnitud es claramente distinta. Esta pérdida de información se traduce en una menor eficiencia.
+
+En esta unidad, exploraremos las contrapartes no paramétricas de las pruebas que ya conocemos: la prueba de los Rangos con Signo de Wilcoxon para muestras pareadas, la prueba U de Mann-Whitney para dos muestras independientes, la prueba H de Kruskal-Wallis para más de dos grupos, y la prueba de Rachas para evaluar la aleatoriedad de una secuencia."
+
+[DEMOSTRACIÓN 3-4min] Prueba de Rangos con Signo de Wilcoxon (Muestras Pareadas) - Paso a paso con justificaciones
+
+"Permítanme ilustrar la lógica con la Prueba de Rangos con Signo de Wilcoxon, una de las más utilizadas para comparar dos poblaciones con muestras pareadas, como un diseño de 'antes y después'.
+
+El objetivo es determinar si hay un cambio significativo en la mediana. No solo nos importa la dirección del cambio (si es positivo o negativo), sino también la magnitud de ese cambio.
+
+Los pasos son los siguientes:
+Primero, para cada par de observaciones, calculamos la diferencia entre ellas.
+Segundo, ignoramos cualquier diferencia que sea exactamente cero, ya que no nos aporta información sobre un cambio.
+Tercero, tomamos el valor absoluto de estas diferencias y las ordenamos de menor a mayor. A cada una le asignamos un rango.
+
+\textbf{¿Qué ocurre si hay empates, es decir, si varias diferencias absolutas tienen el mismo valor?} En ese caso, asignamos el \textbf{rango promedio} a cada una de las observaciones empatadas. Por ejemplo, si dos diferencias absolutas ocupan las posiciones 2 y 3, a ambas se les asigna el rango 2.5. \textbf{¿Por qué usamos el rango promedio?} Para mantener la equidad y la consistencia en la asignación de rangos, asegurando que cada observación contribuya proporcionalmente al estadístico final.
+
+Cuarto, volvemos a asignar el signo original a estos rangos. Así, tendremos rangos positivos y rangos negativos.
+Quinto, calculamos la suma de los rangos positivos, que llamaremos $W^+$, y la suma de los rangos negativos, $W^-$.
+Finalmente, nuestro estadístico de prueba $W$ es el mínimo entre $W^+$ y $W^-$.
+
+\textbf{¿Por qué tomamos el mínimo?} Porque un valor muy pequeño de $W^+$ o $W^-$ sugiere que la mayoría de los rangos grandes se concentran en el otro signo, indicando un cambio significativo en una dirección particular. Si la hipótesis nula de no cambio es cierta, esperaríamos que los rangos positivos y negativos estuvieran más o menos equilibrados.
+
+Para muestras grandes, el estadístico $W$ se aproxima a una distribución normal. Su media esperada es $n(n+1)/4$ y su varianza es $n(n+1)(2n+1)/24$.
+
+Ahora, un detalle crucial que a menudo se pasa por alto: la \textbf{corrección por empates en la varianza}. La fórmula estándar de la varianza asume que no hay empates. Sin embargo, en datos reales, los empates son comunes. Cuando hay empates, la varianza real del estadístico $W$ es menor de lo que la fórmula sin corrección indicaría.
+
+\textbf{¿Por qué la varianza real es menor con empates?} Porque los empates reducen la variabilidad en la asignación de rangos. Al asignar el mismo rango promedio a múltiples observaciones, estamos, en cierto modo, 'forzando' una menor dispersión en los rangos, lo que se refleja en una varianza más pequeña. Por ello, se resta un término de corrección que depende del número y tamaño de los empates, asegurando que nuestra aproximación a la normal sea precisa."
+
+[EJEMPLO 2min] Caso práctico con énfasis en detalles críticos
+
+"Imaginemos que estamos evaluando la efectividad de un nuevo medicamento para reducir la presión arterial. Medimos la presión antes y después en 10 pacientes. Al calcular las diferencias y asignar rangos, nos encontramos con que dos pacientes tuvieron la misma reducción de presión, lo que resulta en un empate.
+
+Supongamos que las diferencias absolutas ordenadas son: 2, 3, 5, 5, 7, 8, 10, 12, 15, 18.
+Aquí, el 5 aparece dos veces. Si el 2 tiene rango 1, el 3 tiene rango 2, entonces los dos 5s ocuparían las posiciones 3 y 4. Su rango promedio sería (3+4)/2 = 3.5. Ambos recibirían el rango 3.5.
+
+Este manejo de empates es vital. Si no aplicáramos la corrección por empates en la varianza al calcular nuestro estadístico Z, estaríamos sobreestimando la variabilidad de $W$. Esto podría llevarnos a un p-valor incorrecto y, potencialmente, a una conclusión errónea sobre la significancia del medicamento. La fórmula corregida de la varianza de $W$ incluye un término que ajusta por estos empates, asegurando que nuestra inferencia sea válida."
+
+[CIERRE 30s] Resumen de implicaciones prácticas
+
+"En resumen, las pruebas no paramétricas son herramientas indispensables en nuestro arsenal estadístico. Nos permiten analizar datos cuando los supuestos de normalidad no se cumplen, cuando trabajamos con datos ordinales, o cuando la presencia de valores atípicos hace que las pruebas paramétricas sean poco fiables. Siempre recuerden la regla de oro: si los supuestos de la prueba paramétrica se cumplen, úsenla, ya que es más potente. Pero si no, las pruebas no paramétricas son la alternativa correcta y válida, ofreciéndonos robustez a cambio de una ligera pérdida de eficiencia. Dominar cuándo y cómo aplicar estas pruebas es una habilidad crucial para cualquier analista de datos."

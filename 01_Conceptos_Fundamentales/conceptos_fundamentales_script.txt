@@ -1,0 +1,28 @@
+[INTRO 15s]
+¡Hola a todos y bienvenidos a nuestro curso de Estadística Aplicada II! En esta primera unidad, sentaremos las bases de todo nuestro estudio. Pasaremos de simplemente describir datos a hacer algo mucho más poderoso: inferir conclusiones sobre poblaciones completas a partir de pequeñas muestras. Este es el corazón de la estadística moderna.
+
+[TEORÍA 2-3min]
+El dilema central al que nos enfrentamos es la diferencia entre una población y una muestra. Una población es el universo completo de elementos que nos interesan, por ejemplo, todos los estudiantes de una universidad. Estudiar a todos es, por lo general, imposible. Por eso, tomamos una muestra, un subconjunto representativo. Las características de la población, como la media (μ) o la varianza (σ²), se llaman parámetros y son valores fijos pero desconocidos. Las características que calculamos de nuestra muestra, como la media muestral (x̄) o la varianza muestral (S²), se llaman estimadores. Estos estimadores son nuestra ventana para intentar ver los verdaderos parámetros de la población.
+
+Pero, ¿cómo sabemos si nuestros estimadores son buenos? Buscamos tres propiedades clave: que sean insesgados, eficientes y consistentes. Un estimador insesgado es aquel que, en promedio, acierta al valor real del parámetro. No tiene una tendencia sistemática a sobreestimar o subestimar. Entre dos estimadores insesgados, el más eficiente es el que tiene menor varianza, es decir, el que nos da estimaciones más precisas y consistentes. Finalmente, un estimador consistente es aquel que se acerca cada vez más al valor real del parámetro a medida que aumentamos el tamaño de nuestra muestra.
+
+[DEMOSTRACIÓN 3-4min]
+Ahora, vamos a la demostración de una de las propiedades más importantes: por qué la media muestral es un estimador insesgado de la media poblacional. Es decir, demostraremos que el valor esperado de la media muestral es igual a la media poblacional.
+
+Paso 1: Partimos de la definición de la media muestral, x̄, que es la suma de todas nuestras observaciones dividida por el número de observaciones, n.
+Paso 2: Aplicamos el operador de Esperanza Matemática. Una de las propiedades fundamentales de la esperanza es su linealidad. Esto significa que la esperanza de una suma es la suma de las esperanzas, y podemos sacar las constantes fuera del operador.
+Paso 3: ¿Por qué es válido este paso? La linealidad de la esperanza es una propiedad matemática robusta que no depende de si las variables son independientes. Cada observación individual (Xi) es una variable aleatoria extraída de la población, por lo que su valor esperado es, por definición, la media poblacional μ.
+Paso 4: Sumamos μ n veces, lo que nos da nμ. Al dividir por n, los términos se cancelan y nos queda simplemente μ.
+Así, hemos demostrado que E(x̄) = μ.
+
+Ahora, ¿qué pasa con la varianza de la media muestral? Aquí la independencia de las observaciones, garantizada por un muestreo aleatorio simple, es crucial.
+Paso 1: Partimos de la definición de la varianza de la media muestral.
+Paso 2: Sacamos la constante 1/n, que sale elevada al cuadrado.
+Paso 3: Aquí aplicamos la propiedad de que la varianza de una suma de variables *independientes* es la suma de sus varianzas. ¿Por qué es válido? Porque el muestreo aleatorio simple nos asegura que cada observación es independiente de las demás. Si no lo fueran, tendríamos que añadir términos de covarianza, y la fórmula no sería tan simple.
+Paso 4: La varianza de cada observación individual es la varianza poblacional σ². Sumamos σ² n veces y lo dividimos por n², lo que nos da como resultado σ²/n. Esto nos muestra que la variabilidad de la media muestral disminuye a medida que nuestra muestra se hace más grande.
+
+[EJEMPLO 2min]
+Finalmente, hablemos del Teorema Central del Límite. Este es, quizás, el resultado más poderoso de la estadística. Nos dice que, sin importar la forma de la distribución de la población original, la distribución de las medias muestrales se aproximará a una distribución normal si el tamaño de la muestra es suficientemente grande, generalmente mayor a 30. Esto es increíblemente útil, porque nos permite usar las propiedades de la distribución normal para hacer inferencias, incluso si no sabemos nada sobre la población de la que partimos.
+
+[CIERRE 30s]
+En resumen, hemos sentado las bases para la inferencia estadística. Entendemos la diferencia entre población y muestra, las propiedades de un buen estimador, y cómo el Teorema Central del Límite nos permite conectar nuestras muestras con la población general. Con estas herramientas, estamos listos para empezar a construir intervalos de confianza y realizar pruebas de hipótesis en las próximas unidades.

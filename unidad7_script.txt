@@ -1,0 +1,42 @@
+[INTRODUCCIÓN ~15s]
+Bienvenidos a la Unidad 7: Procesos Estocásticos. En el vasto universo de la estadística y la probabilidad, hemos explorado variables aleatorias que describen resultados inciertos en un instante dado. Sin embargo, muchos fenómenos en la naturaleza, la economía o la ingeniería no son estáticos; evolucionan con el tiempo, y su evolución está sujeta a la aleatoriedad. Aquí es donde entran en juego los procesos estocásticos, una herramienta matemática fundamental para modelar sistemas dinámicos cuya trayectoria futura no puede predecirse con certeza, sino solo en términos de probabilidades.
+
+[TEORÍA ~2-3min]
+Un proceso estocástico, denotado como X(t), es esencialmente una colección de variables aleatorias indexadas por un parámetro, usualmente el tiempo 't'. Para cada instante 't', X(t) es una variable aleatoria. Los elementos clave que definen un proceso estocástico son su espacio de estados y su parámetro de tiempo. El espacio de estados es el conjunto de todos los posibles valores o "estados" que el proceso puede tomar. Por ejemplo, el estado del clima (soleado, nublado, lluvioso) o el número de clientes en una cola. El parámetro de tiempo puede ser discreto, como el conteo de días (t = 0, 1, 2, ...), o continuo, como el tiempo transcurrido desde un evento (t ≥ 0). Una secuencia particular de valores observados a lo largo del tiempo se denomina una "realización" o "trayectoria" del proceso.
+
+Dentro de la amplia familia de procesos estocásticos, las Cadenas de Markov son de particular interés debido a su propiedad distintiva: la Propiedad de Markov, también conocida como la propiedad de "carencia de memoria". Esta propiedad establece que la probabilidad de que el proceso se mueva a un estado futuro depende únicamente de su estado presente, y no de cómo llegó a ese estado. Formalmente, la probabilidad de estar en el estado 'j' en el tiempo 't+1', dado el estado 'i' en el tiempo 't' y todos los estados pasados, es simplemente la probabilidad de estar en 'j' dado solo el estado 'i'.
+
+Las transiciones entre estados se rigen por las probabilidades de transición de un paso, p_ij, que representan la probabilidad de pasar del estado 'i' al estado 'j' en el siguiente paso de tiempo. Estas probabilidades se organizan en una Matriz de Transición, P. Esta matriz es cuadrada, donde cada elemento p_ij se encuentra en la fila 'i' y columna 'j'. Es crucial que las entradas de cada fila de la matriz sumen 1, ya que desde cualquier estado, el proceso debe transitar a algún estado posible. Además, todas las probabilidades deben estar entre 0 y 1.
+
+[DEMOSTRACIÓN ~3-4min]
+Para ilustrar estos conceptos, consideremos un ejemplo clásico: el modelo del clima. Supongamos que el clima de mañana (soleado, nublado, lluvioso) solo depende del clima de hoy. Definimos nuestro espacio de estados como {Soleado, Nublado, Lluvioso}. Ahora, construyamos una matriz de transición simple.
+
+Si hoy está soleado, hay un 70% de probabilidad de que mañana sea soleado, un 20% de que sea nublado y un 10% de que sea lluvioso.
+Si hoy está nublado, hay un 30% de probabilidad de que mañana sea soleado, un 50% de que sea nublado y un 20% de que sea lluvioso.
+Si hoy está lluvioso, hay un 20% de probabilidad de que mañana sea soleado, un 60% de que sea nublado y un 20% de que sea lluvioso.
+
+Esto nos da la siguiente matriz de transición P:
+P = [[0.7, 0.2, 0.1],
+     [0.3, 0.5, 0.2],
+     [0.2, 0.6, 0.2]]
+
+Observen que la suma de las filas de la matriz de transición debe ser 1. ¿Por qué? Porque desde cualquier estado actual, la suma de las probabilidades de transitar a *todos* los posibles estados futuros debe ser igual a la certeza, es decir, 1. El clima de mañana *debe* ser uno de los estados definidos.
+
+Ahora, ¿cómo calculamos la probabilidad de un estado futuro? Si conocemos la distribución de probabilidad del clima hoy, digamos que hay un 40% de probabilidad de que esté soleado, 30% nublado y 30% lluvioso, representamos esto como un vector de estado inicial: π(0) = [0.4, 0.3, 0.3].
+
+Para encontrar la distribución de probabilidad del clima mañana, multiplicamos este vector de estado inicial por la matriz de transición: π(1) = π(0) * P. ¿Por qué multiplicamos la distribución de probabilidad inicial por la matriz de transición? Porque cada componente del nuevo vector de estado se obtiene sumando las probabilidades de llegar a ese estado desde todos los estados posibles, ponderadas por la probabilidad de estar en esos estados hoy. Es una combinación lineal de las probabilidades actuales y las probabilidades de transición.
+
+Si queremos predecir el clima dentro de 'n' días, simplemente elevamos la matriz de transición a la potencia 'n': P^n. La distribución de probabilidad en el tiempo 'n' será π(n) = π(0) * P^n. Este es el poder de la Ecuación de Chapman-Kolmogorov.
+
+Y, ¿por qué es fundamental la propiedad de Markov (falta de memoria) para este cálculo? Porque nos permite simplificar drásticamente la complejidad. Si el futuro dependiera de toda la historia pasada, el cálculo sería intratable. La propiedad de Markov nos asegura que solo necesitamos el estado actual para predecir el siguiente, lo que hace posible el uso de la matriz de transición y sus potencias para la predicción a largo plazo.
+
+[EJEMPLO PRÁCTICO ~2min]
+Consideremos un ejemplo práctico en el ámbito del comercio. Imaginemos un supermercado con tres secciones principales: Lácteos, Panadería y Cajas. Un cliente se mueve entre estas secciones. Podemos modelar el movimiento de un cliente como una Cadena de Markov.
+
+Los estados serían: {Lácteos, Panadería, Cajas}.
+La matriz de transición podría reflejar la probabilidad de que un cliente, estando en Lácteos, se mueva a Panadería, o directamente a Cajas, o permanezca en Lácteos (quizás buscando algo más). Similarmente, las probabilidades de transición desde Panadería y Cajas. Por ejemplo, desde Cajas, la probabilidad de ir a Lácteos o Panadería sería muy baja, y la probabilidad de salir del supermercado (o permanecer en Cajas si hay cola) sería alta.
+
+Este modelo nos permitiría responder preguntas como: ¿Cuál es la probabilidad de que un cliente que acaba de entrar a Lácteos termine en Cajas en los próximos 10 minutos? O, a largo plazo, ¿qué porcentaje del tiempo un cliente promedio pasa en cada sección? Esto es invaluable para la optimización del diseño de la tienda, la asignación de personal o la colocación estratégica de productos.
+
+[CIERRE ~30s]
+Los procesos estocásticos, y en particular las Cadenas de Markov, son herramientas increíblemente versátiles. Sus aplicaciones se extienden a campos tan diversos como las finanzas, para modelar precios de acciones; la biología, para estudiar la propagación de enfermedades o la evolución genética; la ingeniería, para analizar la fiabilidad de sistemas; y la informática, en algoritmos de búsqueda y procesamiento de lenguaje natural. Hemos apenas arañado la superficie de este fascinante campo. Existen procesos estocásticos de tiempo continuo, procesos de nacimiento y muerte, y el movimiento Browniano, que abren la puerta a modelos aún más complejos y realistas. Comprender los fundamentos de las Cadenas de Markov es el primer paso crucial para adentrarse en el análisis de sistemas dinámicos y aleatorios en un mundo en constante cambio.

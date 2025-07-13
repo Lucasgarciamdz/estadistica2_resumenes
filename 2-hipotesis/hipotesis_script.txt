@@ -1,0 +1,19 @@
+
+[INTRO 15s]
+¡Hola a todos! En esta unidad, pasamos de la estimación a la toma de decisiones. A menudo, no solo queremos saber el valor de un parámetro, sino que necesitamos decidir si una afirmación sobre él es verdadera o falsa. ¿Funciona realmente este nuevo fármaco? ¿Es este proceso de fabricación mejor que el anterior? Las pruebas de hipótesis nos dan un marco formal para responder a estas preguntas con un grado de confianza medible.
+
+[TEORÍA 2-3min]
+La lógica de una prueba de hipótesis es similar a un juicio. Partimos de una presunción de inocencia, la Hipótesis Nula, o H0, que generalmente es una afirmación de 'no efecto' o 'no diferencia'. Luego, planteamos una Hipótesis Alternativa, H1, que es lo que creeríamos si la evidencia nos obliga a rechazar la H0. El proceso consiste en recolectar datos y calcular qué tan probable es obtener esa evidencia si la Hipótesis Nula fuera cierta. Si nuestros datos son muy 'raros' o 'extremos' bajo la suposición de que H0 es verdadera, la rechazamos.
+
+Pero, ¿qué significa 'raro'? Aquí es donde entra el nivel de significancia, alfa. Alfa es la probabilidad de cometer un Error de Tipo I: rechazar la hipótesis nula cuando en realidad es verdadera. Es nuestro umbral de 'rareza'. Un alfa de 0.05 significa que estamos dispuestos a aceptar un 5% de probabilidad de equivocarnos al rechazar H0. Por otro lado, un Error de Tipo II, beta, ocurre cuando no rechazamos una H0 que en realidad es falsa. La potencia de una prueba, 1 menos beta, es su capacidad para detectar un efecto real.
+
+[DEMOSTRACIÓN 3-4min]
+El procedimiento para cualquier prueba de hipótesis sigue cinco pasos clave. Primero, formulamos las hipótesis H0 y H1. Segundo, establecemos el nivel de significancia alfa. Tercero, construimos un criterio de decisión, lo que implica elegir un estadístico de prueba adecuado, como Z o t, y definir la región de rechazo. Cuarto, calculamos el valor de ese estadístico a partir de nuestros datos muestrales. Y quinto, tomamos una decisión: si nuestro estadístico cae en la región de rechazo, rechazamos H0; de lo contrario, no tenemos evidencia suficiente para rechazarla.
+
+Veamos la construcción del estadístico t, que es crucial cuando no conocemos la varianza de la población. ¿Por qué no podemos simplemente usar el estadístico Z y reemplazar sigma por la desviación estándar muestral, s? Porque 's' es una variable aleatoria que cambia con cada muestra, introduciendo una incertidumbre adicional. La distribución t de Student, con sus colas más pesadas, está diseñada precisamente para manejar esta incertidumbre. Se define como el cociente entre una variable Normal estándar y la raíz cuadrada de una Chi-cuadrado dividida por sus grados de libertad. Se puede demostrar que el estadístico t que usamos, (x̄ - μ) / (s / √n), sigue exactamente esta estructura, con n-1 grados de libertad.
+
+[EJEMPLO 2min]
+Imaginemos que una fábrica de baterías afirma que su vida útil media es de 10,000 horas. Queremos probar si es menor. Nuestra H0 sería μ = 10,000 y nuestra H1 sería μ < 10,000. Tomamos una muestra, calculamos su media y desviación estándar, y con eso, nuestro estadístico t. Si este valor de t es muy bajo y cae en la región de rechazo de la cola izquierda de la distribución t, tendremos evidencia para rechazar la afirmación de la fábrica.
+
+[CIERRE 30s]
+En resumen, las pruebas de hipótesis son una herramienta fundamental para la toma de decisiones basada en datos. Hemos aprendido a formular hipótesis, a entender los errores asociados y a seguir un procedimiento riguroso para llegar a una conclusión estadística. En los próximos videos, aplicaremos estos conceptos a la comparación de múltiples grupos y al análisis de proporciones.

@@ -1,0 +1,48 @@
+[INTRO 15s]
+¡Bienvenidos a la sexta unidad de Estadística Aplicada II! Hoy vamos a desentrañar los misterios de los Diseños Experimentales Avanzados y el Análisis de la Varianza, o ANOVA, en contextos más complejos. Si en la Unidad 3 sentamos las bases del ANOVA de un factor, ahora elevaremos nuestro análisis para abordar la realidad de los experimentos, donde múltiples factores interactúan y donde necesitamos controlar fuentes de variabilidad que, de otro modo, enmascararían nuestros resultados. ¿Por qué es esto crucial? Porque nos permite obtener conclusiones más precisas y robustas en la investigación científica y aplicada.
+
+[TEORÍA 2-3min]
+En la práctica experimental, rara vez nos encontramos con situaciones donde la única fuente de variabilidad sea el tratamiento que nos interesa. A menudo, existen otras variables, conocidas como **factores de bloqueo** o **variables de molestia**, que pueden influir en la respuesta. Si no las controlamos, su variabilidad se mezcla con el error aleatorio, inflando el Cuadrado Medio del Error y reduciendo la potencia de nuestra prueba. ¿Por qué es esto un problema? Porque podríamos no detectar un efecto real del tratamiento, cometiendo un error de Tipo II.
+
+Para mitigar esto, introducimos el **Diseño de Bloques Completos al Azar (DBCA)**. Su lógica es simple pero poderosa: agrupar las unidades experimentales en **bloques** que sean lo más homogéneos posible entre sí respecto a la variable de molestia. Dentro de cada bloque, todos los tratamientos se asignan aleatoriamente. ¿Por qué hacemos esto? Porque al realizar las comparaciones entre tratamientos *dentro* de cada bloque, eliminamos la variabilidad *entre* los bloques. Esto se traduce en una reducción significativa del Cuadrado Medio del Error, lo que, a su vez, aumenta la sensibilidad de nuestra prueba para detectar diferencias en los tratamientos.
+
+Más allá de controlar variables de molestia, a menudo nos interesa estudiar el efecto de **múltiples factores** simultáneamente. Aquí entran en juego los **Diseños Factoriales**. Estos diseños nos permiten no solo evaluar el efecto individual de cada factor, conocido como **efecto principal**, sino, y esto es crucial, analizar si existe una **interacción** entre ellos. Una interacción ocurre cuando el efecto de un factor sobre la variable de respuesta cambia dependiendo del nivel de otro factor. ¿Por qué la interacción es tan importante? Porque si una interacción es significativa, la interpretación de los efectos principales por sí solos puede ser engañosa. Por ejemplo, un medicamento podría ser efectivo solo si se combina con una dieta específica. Ignorar la interacción nos llevaría a conclusiones erróneas.
+
+Finalmente, una vez que un ANOVA nos indica que *al menos una* media es diferente, surge la pregunta: ¿cuál o cuáles son diferentes? El ANOVA es una prueba global. Para responder a esta pregunta específica, recurrimos a las **pruebas post-hoc** o **pruebas de comparaciones múltiples**. ¿Por qué no podemos simplemente hacer múltiples pruebas t de Student? Porque cada prueba t individual tiene una probabilidad \(\alpha\) de cometer un error de Tipo I. Si realizamos muchas comparaciones, la probabilidad acumulada de cometer *al menos un* falso positivo (la **tasa de error familiar**) se dispara. Las pruebas post-hoc están diseñadas precisamente para controlar esta tasa de error familiar, ajustando el nivel de significancia para mantenerla en el valor deseado, típicamente 0.05. Entre las más robustas y recomendadas se encuentra la **Prueba HSD de Tukey**, que nos permite comparar todas las posibles parejas de medias de forma controlada.
+
+[DEMOSTRACIÓN 3-4min]
+Para entender cómo los diseños avanzados logran su objetivo, veamos la descomposición de la varianza.
+En un **Diseño de Bloques Completos al Azar (DBCA)**, el modelo matemático es:
+$$ X_{ij} = \mu + \tau_i + \beta_j + \epsilon_{ij} $$
+Aquí, \(X_{ij}\) es la observación del tratamiento \(i\) en el bloque \(j\). \(\mu\) es la gran media, \(\tau_i\) es el efecto del tratamiento \(i\), \(\beta_j\) es el efecto del bloque \(j\), y \(\epsilon_{ij}\) es el error aleatorio.
+La Suma de Cuadrados Total (SCT) se descompone en tres componentes:
+$$ SCT = SCTr + SCB + SCE $$
+Donde SCTr es la Suma de Cuadrados de los Tratamientos, SCB es la Suma de Cuadrados de los Bloques, y SCE es la Suma de Cuadrados del Error.
+¿Por qué esta descomposición es tan ventajosa? Porque al calcular la SCB y restarla de la SCT, estamos eliminando explícitamente la variabilidad atribuible a los bloques del error residual. Esto hace que el SCE sea más pequeño, y consecuentemente, el Cuadrado Medio del Error (CME), que es el denominador en el estadístico F para el tratamiento, también se reduce. Un CME más pequeño significa un estadístico F más grande, lo que aumenta la potencia de nuestra prueba.
+
+Ahora, en los **Diseños Factoriales**, el modelo se vuelve más complejo para capturar la interacción:
+$$ X_{ijk} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \epsilon_{ijk} $$
+Aquí, \(\alpha_i\) es el efecto principal del Factor A, \(\beta_j\) es el efecto principal del Factor B, y \((\alpha\beta)_{ij}\) es el efecto de la interacción entre A y B.
+La descomposición de la varianza para un diseño factorial de dos factores es:
+$$ SCT = SCA + SCB + SCAB + SCE $$
+Donde SCA y SCB son las Sumas de Cuadrados para los efectos principales de los factores A y B, respectivamente, y SCAB es la Suma de Cuadrados de la Interacción.
+¿Por qué es crucial tener un término de interacción separado? Porque nos permite probar si el efecto de un factor es consistente a través de los niveles del otro factor. Si SCAB es significativa, significa que los efectos de los factores no son aditivos, y su impacto combinado es más que la suma de sus partes individuales.
+
+Finalmente, para las **pruebas post-hoc**, como la **Prueba HSD de Tukey**, el desarrollo se basa en la distribución del rango estudentizado. El valor HSD se calcula como:
+$$ HSD = q_{\alpha, k, gl_E} \sqrt{\frac{CME}{n}} $$
+Donde \(q\) es el valor crítico de la distribución del rango estudentizado, \(k\) es el número de grupos, \(gl_E\) son los grados de libertad del error del ANOVA, \(CME\) es el Cuadrado Medio del Error, y \(n\) es el tamaño de la muestra por grupo.
+¿Por qué Tukey utiliza el rango estudentizado y no simplemente múltiples pruebas t? Porque el rango estudentizado ya incorpora el número de comparaciones que se están realizando, lo que permite controlar la tasa de error familiar de manera más efectiva que una simple corrección de Bonferroni, que a menudo es demasiado conservadora y reduce la potencia. Tukey es el estándar de oro porque ofrece un buen equilibrio entre el control del error de Tipo I y la potencia estadística.
+
+[EJEMPLO 2min]
+Imaginemos un estudio agrícola donde queremos evaluar el rendimiento de tres nuevas variedades de trigo (Factor A: Variedad 1, 2, 3) bajo dos tipos de fertilizante (Factor B: Fertilizante X, Y). Además, sabemos que la fertilidad del suelo varía significativamente en diferentes parcelas del campo.
+
+Para abordar esto, podríamos diseñar un **experimento factorial 3x2** (3 variedades x 2 fertilizantes) y, al mismo tiempo, usar la **fertilidad del suelo como factor de bloqueo**. Dividiríamos el campo en bloques de suelo homogéneo, y dentro de cada bloque, asignaríamos aleatoriamente las 6 combinaciones de variedad y fertilizante.
+
+Después de la cosecha, analizaríamos el rendimiento del trigo. El ANOVA nos permitiría responder a varias preguntas críticas:
+1.  ¿Existe un efecto principal significativo de la variedad de trigo en el rendimiento?
+2.  ¿Existe un efecto principal significativo del tipo de fertilizante en el rendimiento?
+3.  ¿Existe una **interacción** significativa entre la variedad y el fertilizante? Es decir, ¿el mejor fertilizante para la Variedad 1 es también el mejor para la Variedad 2 o 3? Este es un detalle crítico: si la interacción es significativa, no podemos simplemente decir que 'la Variedad 1 es la mejor' o 'el Fertilizante X es el mejor', sino que debemos especificar la combinación óptima.
+4.  Finalmente, si encontramos un efecto significativo de la variedad, podríamos usar una **prueba post-hoc de Tukey** para determinar qué variedades específicas difieren en su rendimiento promedio, controlando el error de Tipo I global. Este enfoque nos da una imagen completa y matizada de los factores que influyen en el rendimiento del trigo.
+
+[CIERRE 30s]
+En síntesis, los diseños experimentales avanzados como el DBCA y los diseños factoriales, junto con las pruebas post-hoc, son herramientas esenciales para el análisis estadístico riguroso. Nos permiten ir más allá de las comparaciones simples, controlando fuentes de variabilidad no deseadas, desentrañando interacciones complejas entre factores y realizando comparaciones específicas de manera controlada. Comprender la descomposición de la varianza y la importancia de la interacción es clave para extraer conclusiones válidas y potentes de nuestros experimentos. ¡Dominar estas técnicas es un paso fundamental para cualquier investigador o analista de datos!

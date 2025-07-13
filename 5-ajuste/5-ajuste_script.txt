@@ -1,0 +1,62 @@
+[INTRO 15s]
+¡Bienvenidos a la Unidad 5 de Estadística Aplicada II! Hoy nos sumergiremos en el fascinante mundo de los datos categóricos, explorando dos herramientas poderosas: las pruebas de Bondad de Ajuste y de Independencia, ambas basadas en el estadístico Chi-Cuadrado. Esta unidad es fundamental porque nos permite analizar relaciones y distribuciones en datos que no son numéricos continuos, abriendo un abancho de posibilidades para la investigación.
+
+[TEORÍA 2-3min]
+El corazón de esta unidad es el estadístico Chi-Cuadrado, denotado como $\chi^2$. Su propósito es cuantificar la discrepancia entre lo que observamos en nuestros datos y lo que esperaríamos ver si una hipótesis nula específica fuera cierta. La fórmula es la siguiente:
+
+$\chi^2 = \sum_{\text{todas las celdas}} \frac{(F_o - F_e)^2}{F_e}$
+
+Aquí, $F_o$ representa la frecuencia observada, es decir, el conteo real de nuestras observaciones en cada categoría. Y $F_e$ es la frecuencia esperada, que es el conteo que anticiparíamos si la hipótesis nula fuera verdadera.
+
+Ahora, detengámonos en los detalles de esta fórmula.
+**¿Por qué elevamos al cuadrado la diferencia $(F_o - F_e)$?** Primero, para evitar que las diferencias positivas y negativas se anulen entre sí, lo que podría llevarnos a una suma cercana a cero incluso con grandes discrepancias. Segundo, y crucialmente, elevar al cuadrado magnifica las desviaciones más grandes, dándoles mayor peso en el estadístico. Una diferencia de 10 contribuye 100 a la suma, mientras que una de 1 solo contribuye 1. Esto refleja que las grandes desviaciones son más significativas estadísticamente.
+
+**¿Y por qué dividimos por $F_e$, la frecuencia esperada?** Esta división es una ponderación. Una diferencia de 5 unidades es mucho más significativa si esperábamos 10 (una desviación del 50%) que si esperábamos 1000 (una desviación del 0.5%). Dividir por $F_e$ normaliza la contribución de cada celda, dando más peso a las desviaciones relativas en celdas con bajas frecuencias esperadas. Es una forma de estandarizar la contribución de cada celda a la suma total, y es fundamental para que el estadístico se aproxime a una distribución Chi-Cuadrado.
+
+Un valor de $\chi^2$ cercano a cero indica un buen ajuste entre lo observado y lo esperado, apoyando la hipótesis nula. Un valor grande, por el contrario, sugiere una gran discrepancia, proporcionando evidencia en contra de $H_0$. Por esta razón, la prueba $\chi^2$ es siempre de cola derecha.
+
+[DEMOSTRACIÓN 3-4min]
+Exploremos ahora cómo se aplica este estadístico en las dos pruebas principales.
+
+**Primero, la Prueba de Bondad de Ajuste.**
+Esta prueba responde a la pregunta: ¿Sigue la distribución de una única variable categórica un patrón o distribución teórica específica?
+Por ejemplo, si lanzamos un dado 600 veces, ¿podemos considerar que el dado es justo? Es decir, ¿se ajustan las frecuencias observadas de cada cara a una distribución uniforme donde cada cara tiene una probabilidad de 1/6?
+La hipótesis nula ($H_0$) postula que la distribución de la población sigue el modelo teórico.
+Para calcular las frecuencias esperadas ($F_e$), simplemente multiplicamos el tamaño total de la muestra ($n$) por la probabilidad teórica ($p_i$) de cada categoría según $H_0$: $F_e = n \times p_i$.
+Los grados de libertad ($gl$) para esta prueba se calculan como $gl = k - 1 - m$, donde $k$ es el número de categorías y $m$ es el número de parámetros que hemos estimado a partir de los datos de la muestra para poder calcular las frecuencias esperadas.
+**¿Por qué restamos 1 en los grados de libertad?** Porque la suma de las frecuencias observadas debe ser igual a la suma de las esperadas, ambas iguales al tamaño total de la muestra. Esto significa que si conocemos $k-1$ de las frecuencias, la última queda determinada, perdiendo un grado de libertad.
+
+**Segundo, la Prueba de Independencia.**
+Esta prueba nos permite determinar si existe una asociación entre dos variables categóricas en una población, o si son independientes.
+Imaginemos que queremos saber si existe una relación entre el nivel de estudios de una persona y su preferencia por un candidato político. Los datos se organizan en una tabla de contingencia.
+La hipótesis nula ($H_0$) aquí es que las dos variables son independientes.
+Para calcular las frecuencias esperadas ($F_e$) en una tabla de contingencia, bajo el supuesto de independencia, usamos la siguiente lógica: la probabilidad de que dos eventos independientes ocurran juntos es el producto de sus probabilidades individuales. Así, la frecuencia esperada para la celda en la fila $i$ y la columna $j$ es:
+$F_e = \frac{(\text{Total Fila } i) \times (\text{Total Columna } j)}{\text{Gran Total}}$
+**¿Por qué esta fórmula para $F_e$ en independencia?** Se deriva directamente de la definición de independencia. Si la probabilidad de una celda es el producto de las probabilidades marginales de su fila y columna, y multiplicamos eso por el gran total, obtenemos la frecuencia esperada bajo independencia.
+
+Los grados de libertad ($gl$) para la prueba de independencia se calculan como $gl = (\text{nº de filas} - 1) \times (\text{nº de columnas} - 1)$.
+**¿Por qué $(r-1)(c-1)$ para los grados de libertad en independencia?** Los grados de libertad representan el número de celdas que podemos llenar "libremente" en una tabla de contingencia antes de que el resto de los valores queden automáticamente determinados por los totales marginales de fila y columna. Si tenemos $r$ filas y $c$ columnas, una vez que fijamos los totales marginales, solo podemos elegir libremente los valores de $(r-1)$ filas y $(c-1)$ columnas. El resto se ajusta automáticamente.
+
+[EJEMPLO 2min]
+Consideremos un ejemplo práctico para la prueba de Bondad de Ajuste. Supongamos que una empresa afirma que el 30% de sus clientes prefieren el Producto A, el 50% el Producto B y el 20% el Producto C. Realizamos una encuesta a 200 clientes y observamos que 50 prefieren A, 110 prefieren B y 40 prefieren C.
+
+Nuestra hipótesis nula es que las proporciones de la empresa son correctas.
+Las frecuencias esperadas serían:
+Para Producto A: $200 \times 0.30 = 60$
+Para Producto B: $200 \times 0.50 = 100$
+Para Producto C: $200 \times 0.20 = 40$
+
+Ahora calculamos el estadístico $\chi^2$:
+$\chi^2 = \frac{(50-60)^2}{60} + \frac{(110-100)^2}{100} + \frac{(40-40)^2}{40}$
+$\chi^2 = \frac{(-10)^2}{60} + \frac{(10)^2}{100} + \frac{(0)^2}{40}$
+$\chi^2 = \frac{100}{60} + \frac{100}{100} + 0$
+$\chi^2 = 1.667 + 1 + 0 = 2.667$
+
+Los grados de libertad son $k-1 = 3-1 = 2$.
+Con un nivel de significancia del 5%, buscaríamos el valor crítico en la tabla Chi-Cuadrado con 2 grados de libertad. Si nuestro $\chi^2$ calculado (2.667) es menor que el valor crítico, no rechazaríamos la hipótesis nula, concluyendo que no hay evidencia suficiente para decir que las preferencias de los clientes difieren de las proporciones afirmadas por la empresa.
+
+Un detalle crítico a recordar es la **condición de que todas las frecuencias esperadas ($F_e$) deben ser al menos 5**.
+**¿Por qué es tan crítica esta condición?** Porque el estadístico Chi-Cuadrado se basa en la aproximación de una distribución discreta (las frecuencias observadas) a una distribución continua (la distribución Chi-Cuadrado). Esta aproximación es válida solo cuando los conteos esperados son lo suficientemente grandes. Si los $F_e$ son muy pequeños, la distribución de las frecuencias observadas se vuelve muy asimétrica y discreta, y la distribución Chi-Cuadrado no la representa bien, lo que puede llevar a un p-valor incorrecto y a decisiones erróneas.
+
+[CIERRE 30s]
+En resumen, las pruebas de Bondad de Ajuste y de Independencia son herramientas esenciales para analizar datos categóricos. Ambas utilizan el estadístico Chi-Cuadrado para comparar frecuencias observadas y esperadas, permitiéndonos inferir si una distribución se ajusta a un modelo teórico o si existe una asociación entre dos variables. Comprender los "porqués" detrás de las fórmulas y las condiciones de aplicación es clave para una interpretación rigurosa y precisa. ¡Espero que esta unidad les sea de gran utilidad en su camino como estadísticos!
